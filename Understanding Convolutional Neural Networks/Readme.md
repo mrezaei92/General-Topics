@@ -1,2 +1,2 @@
-Many might be curious about what a CNN learns during training. This code provides an intuitive insight into what different filters at different layers learn.
+Many might be curious about what a CNN learns during training. This code provides an intuitive insight into what different filters at different layers learn. Keras is used to to visualize the inputs that maximize the activation of the filters in different layers of the VGG16 architecture, which is already trained on ImageNet dataset.
 The code has been adopted from https://blog.keras.io/how-convolutional-neural-networks-see-the-world.html, but I have made some modifications to make the code as simple and as readable as possible.
