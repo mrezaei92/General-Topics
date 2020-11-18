@@ -12,4 +12,4 @@ So, when you have deodr package installed, go to where the deodr package is inst
 
 3- Download MANO_RIGHT.pkl from https://mano.is.tue.mpg.de/ and copy it to the folder manopth/mano/models
 
-4- Place the main file in the directory manopth and run it
+4- Place the main file in the directory manopth and run it (both PSO.py and test.ipynb should be placed in the directory /manopth)
