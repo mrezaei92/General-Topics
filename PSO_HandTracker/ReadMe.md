@@ -2,7 +2,12 @@ This is a HandTracker based on Particle Swarm Optimization (PSO).
 The input to the system is a depth map, and the output will be and mesh fit to the image.
 The Renderer used in this system is adopted from: https://github.com/martinResearch/DEODR
 
-Instruction:
+![alt text](https://github.com/mrezaei92/General-Topics/blob/master/PSO_HandTracker/data/1.png?raw=true)
+
+
+
+
+Instruction to Install:
 
 1- Install deodr package using the command line: pip install deodr
 I have made slight changes to their code to make the Renderer use Orthographic Projection.
