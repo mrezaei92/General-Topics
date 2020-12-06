@@ -68,6 +68,10 @@ class Particle:
     def update_position(self,lower_bound,higher_bound):
         self.position_i=self.position_i+self.velocity_i
         self.position_i=np.clip(self.position_i,lower_bound,higher_bound)
+        
+    def set_position(self,pos):
+        self.position_i=pos
+    
                 
 class PSO():
     def __init__(self,num_dimensions,lower_bound,higher_bound,num_particles,ini=None):
@@ -83,9 +87,27 @@ class PSO():
 
         
         
-    def optimize(self,costFunc,num_iter):
+    def optimize(self,costFunc,num_iter,verbose=1,interval_rand=None,proportion_rand=0.25,dims=None,weights=None):
+        # interval_rand denotes the the length of the inverval to randomly purturb proportion_rand of particles
+        # along dimentions dims. dims should be a list of indices, like [1,2,3]
+        # weights is a list where each element corresponds to the intensity by which the a certain dimension is randomized
         i=0
+        save_interval=int(num_iter/verbose)
+        randomized_population_size=np.int32(np.ceil(proportion_rand*self.num_particles))
+        weights=np.array(weights).reshape(1,-1)
         for i in range(num_iter):
+            
+            if interval_rand is not None:
+                if i%interval_rand==0:
+                    randomly_selected=np.random.choice(self.num_particles,randomized_population_size,replace=False)
+                    for j in range(0,len(randomly_selected)):
+                        pos=self.swarm[randomly_selected[j]].position_i  # do some randomization
+                        random_index=np.random.choice(len(dims),1)[0]
+                        select_dim=dims[random_index]
+                        pos[0,select_dim]=pos[0,select_dim]+np.random.rand(1,1)*weights[0,random_index]
+                        self.swarm[randomly_selected[j]].position_i=pos
+                        
+                
             for j in range(0,self.num_particles):
                 self.swarm[j].evaluate(costFunc)
 
@@ -99,11 +121,12 @@ class PSO():
                 self.swarm[j].update_velocity(self.pos_best_g)
                 self.swarm[j].update_position(self.lower_bound,self.higher_bound)
 #             print(i)
-            print("iter {}, best error= {}".format(i,self.err_best_g))
+            if i%save_interval==0 and verbose is not None:
+                print("iter {}, best error= {}".format(i,self.err_best_g))
+    
         # print final results
-        print ('FINAL:')
-        print (self.pos_best_g)
-        print (self.err_best_g)
-
+        #print ('FINAL:')
+        #print (self.pos_best_g)
+        #print (self.err_best_g)
 
 
