@@ -1,8 +1,12 @@
 This is a HandTracker based on Particle Swarm Optimization (PSO). 
 The input to the system is a depth map, and the output will be and mesh fit to the image.
 The Renderer used in this system is adopted from: https://github.com/martinResearch/DEODR
+Here some qualitative results can be seen:
 
 ![alt text](https://github.com/mrezaei92/General-Topics/blob/master/PSO_HandTracker/data/1.png?raw=true)
+![alt text](https://github.com/mrezaei92/General-Topics/blob/master/PSO_HandTracker/data/2.png?raw=true)
+![alt text](https://github.com/mrezaei92/General-Topics/blob/master/PSO_HandTracker/data/3.png?raw=true)
+![alt text](https://github.com/mrezaei92/General-Topics/blob/master/PSO_HandTracker/data/4.png?raw=true)
 
 
 
